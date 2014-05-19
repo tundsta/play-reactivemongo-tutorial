@@ -1,0 +1,16 @@
+@(id: Option[String], form: Form[models.Article], files: Option[List[(String, reactivemongo.api.gridfs.ReadFile[reactivemongo.bson.BSONValue])]])
+@import helper.twitterBootstrap._
+
+<div class="row">
+    <div class="span8">
+        <h2>Add an article</h2>
+        @helper.form(action = (if(id.isDefined) routes.Articles.edit(id.get) else routes.Articles.create), 'class -> "form-horizontal") {
+            @helper.inputText(form("title"))
+            @helper.inputText(form("publisher"))
+            @helper.textarea(form("content"))
+            <div class="form-actions">
+                <input class="btn btn-primary" type="submit">
+            </div>
+        }
+    </div>
+</div>
